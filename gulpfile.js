@@ -6,6 +6,7 @@ const autoClose = require('browser-sync-close-hook');
 const nodemon = require('gulp-nodemon');
 const sass = require('gulp-sass');
 const rename = require('gulp-rename');
+const imagemin = require('gulp-imagemin');
 const concat = require('gulp-concat');
 const minify = require('gulp-minify');
 const ejs = require('gulp-ejs');
@@ -43,8 +44,20 @@ const jsTask = function buildJS() {
   });
 };
 
+const imgTask = function buildImages() {
+  return gulp.src('src/images/*')
+   .pipe(imagemin([
+     imagemin.optipng({ optimizationLevel: 5 }),
+   ]))
+   .pipe(gulp.dest('dist/images'))
+   .on('end', () => {
+     console.log('Successfully compressed images');
+   });
+};
+
 gulp.task('build-sass', sassTask);
 gulp.task('build-js', jsTask);
+gulp.task('build-images', imgTask);
 
 gulp.task('build-dist', () => {
   gulp.src('src/index.ejs')
@@ -55,6 +68,7 @@ gulp.task('build-dist', () => {
      // run sass/js tasks
      sassTask();
      jsTask();
+     imgTask();
    });
 });
 
