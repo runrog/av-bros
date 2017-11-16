@@ -3,13 +3,17 @@ const fs = require('fs');
 const path = require('path');
 const ejs = require('ejs');
 
-const port = 2001;
+const port = 2007;
 
 http.createServer((request, response) => {
   let filePath = `.${request.url}`;
 
-  if (filePath === './') {
-    filePath = './src/index.ejs';
+  if (!filePath.match(/\/dist\//gi)) {
+    if (filePath === './') {
+      filePath = './src/index.ejs';
+    } else {
+      filePath = filePath.replace(/\.\//gi, './src/');
+    }
   }
 
   const extname = path.extname(filePath);

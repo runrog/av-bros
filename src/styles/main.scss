@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
-$baseColor: #eee;
+@import url(https://fonts.googleapis.com/css?family=Damion);
+$baseColor: #c12323;
+$bodyText: rgba(255, 255, 255, 0.8);
+$formInput: rgba(255, 255, 255, 0.04);
+$formFocus: rgba(255, 255, 255, 0.5);
 $bodyFont: 'Roboto', sans-serif;
 $desktop: 'only screen and (min-width : 993px)';
 $tablet: 'only screen and (min-width:601px) and (max-width:992px)';
@@ -10,11 +14,19 @@ $mobile: 'only screen and (min-width:50px) and (max-width:600px)';
 }
 
 body {
-  background-color: $baseColor;
-  color: #596167;
+  background-color: #2b2929;
+  color: $bodyText;
   font-family: $bodyFont;
-  padding-top: 50px;
-  text-align: center;
+}
+
+::-moz-selection {
+  background: $baseColor;
+  color: white;
+}
+
+::selection {
+  background: $baseColor;
+  color: white;
 }
 
 @mixin clear-fix() {
@@ -29,6 +41,270 @@ body {
    content: '';
    display: table;
  }
+}
+
+.drz-hr {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.drz-h4 {
+  font-size: 26pt;
+}
+
+.av-link {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  
+  &:hover {
+    color: $baseColor;
+    transition-duration: .2s;
+  }
+}
+
+.lead-banner {
+  background-color: #000;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 400px;
+  text-align: center;
+}
+
+.av-logo {
+  width: 40%;
+}
+
+.av-logo-text {
+  font-family: 'Damion', cursive;
+  font-size: 24pt;
+}
+
+.drzNav {
+  background-color: $baseColor;
+}
+
+.float-left {
+  float: left;
+}
+
+.services-section {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 400px;
+}
+
+.av-contact-section {
+  // form overrides
+  .drzForm {
+    .drzBtn-link {
+      background-color: #504b4b;
+      width: 100%;
+    }  
+    .drzBtn {
+      background-color: #504b4b;
+      width: 100%;
+    }
+  }
+  
+  .drzForm-fieldLabel {
+    color: $bodyText;
+  }
+  
+  .drzForm-inputText {
+    background-color: $formInput;
+    
+    &:focus {
+      border-color: $formFocus;
+    }
+  }
+  
+  .drzForm-inputEmail {
+    background-color: $formInput;
+
+    &:focus {
+      border-color: $formFocus;
+    }
+  }
+  
+  .drzForm-textarea {
+    background-color: $formInput;
+
+    &:focus {
+      border-color: $formFocus;
+    }
+  }
+}
+
+.av-service {
+  display: block;
+  font-size: 14pt;
+  padding: 30px 0px 5px;
+  width: 100%;
+}
+
+.header-section {
+  background-color: #827d7d;
+  text-align: center;
+}
+
+img.av-map {
+  width: 100%;
+}
+
+.av-h3 {
+  font-weight: 300;
+  font-size: 14pt;
+  margin: 0; 
+}
+
+.av-circle {
+  display: inline-block;
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 15px;
+  width: 50%;
+  padding-bottom: 50%;
+  -webkit-mask-image: -webkit-radial-gradient(center, ellipse cover, #000 20%, transparent 55%, transparent 100%);
+}
+
+svg#av-radar {
+  display: inline-block;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.topScroll-button {
+  background-color: $baseColor;
+}
+
+.footer {
+  background-color: #1f1d1d;
+}
+
+.footer-finePrint {
+  background-color: #100f0f;
+}
+
+.av-fb-text {
+  color: rgba(255, 255, 255, 0.5);
+  position: relative;
+  text-decoration: none;
+  top: -5px;
+  
+  &:hover {
+    color: $baseColor;
+    transition-duration: .2s;
+  }
+}
+
+[class^=drzSocialMedia-icon] {
+  color: rgba(255, 255, 255, 0.3);
+  
+  &:hover {
+    color: $baseColor;
+  }
+}
+
+// Variables
+$prefix: 'shake' !default;
+$trigger: 'shake-trigger' !default;
+
+// Placeholders
+%shake {
+  display: inline-block;
+  transform-origin: center center;
+}
+
+%paused   { animation-play-state: paused; }
+%running  { animation-play-state: running; }
+
+@function apply-random($input) {
+  @return if($input != 0, random($input) - $input/2, 0);
+}
+
+// shake plugin
+@mixin do-shake(
+  $name: 'shake', 
+  $h: 5px, 
+  $v: 5px, 
+  $r: 3deg, 
+  $dur: 100ms, 
+  $precision: .02, 
+  $opacity: false, 
+  $q: infinite, 
+  $t: ease-in-out, 
+  $delay: null,
+  $chunk: 100%
+  ) {  
+
+  $rotate: 0;
+  $move-x: 0;
+  $move-y: 0;
+
+  $h: if(unitless($h) and $h != 0, $h * 1px, $h);
+  $v: if(unitless($v) and $v != 0, $v * 1px, $v);
+  $r: if(unitless($r) and $r != 0, $r * 1deg, $r);
+
+  // Keyframes
+  @at-root {
+    @keyframes #{$name} {
+      $interval: if($precision > 0 and $precision < 1, 100 * $precision, 10);
+      $step: $interval * 1%;
+
+      @while $step < $chunk {
+        $rotate: apply-random($r);
+        $move-x: apply-random($h);
+        $move-y: apply-random($v);
+        
+        #{$step} {
+          transform: translate($move-x, $move-y) rotate($rotate);
+          @if $opacity { opacity: random(100) / 100; }
+        }
+        
+        $step: $step + $interval;
+      }
+
+      #{ if($chunk < 100%, (0%, $chunk, 100%), (0%, 100%)) } {
+        transform: translate(0, 0) rotate(0);
+      }
+
+    }
+  }
+
+  @extend %shake;
+
+  &:hover,
+  .#{$trigger}:hover &,
+  &.#{$prefix}-freeze,
+  &.#{$prefix}-constant {
+    @if $delay { animation-delay: $delay; }
+    animation-name: #{$name};
+    animation-duration: $dur;
+    animation-timing-function: $t;
+    animation-iteration-count: $q;
+  }
+
+  &:hover,
+  .#{$trigger}:hover & { @extend %running; }
+
+}
+
+.#{$prefix}-freeze,
+.#{$prefix}-constant.#{$prefix}-constant--hover:hover,
+.#{$trigger}:hover .#{$prefix}-constant.#{$prefix}-constant--hover {
+  @extend %paused;
+}
+
+.#{$prefix}-freeze:hover,
+.#{$trigger}:hover .#{$prefix}-freeze { @extend %running; }
+
+.av-shake { 
+  @include do-shake(); 
 }
 
 @media #{$mobile} {

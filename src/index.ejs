@@ -4,20 +4,186 @@
     <% var env, path = '', script = 'js/app.min.js';%>
     <% if (env === 'dev') { path = 'dist/'; script = 'dist/js/app.js'; } %>
     <meta charset="utf-8">
-    <title>Node + EJS + SCSS boilerplate</title>
+    <title>AV Bros. Audio & Visual</title>
     <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0">
+    <script src="https://s3-us-west-1.amazonaws.com/drz-assets/scripts/js/jquery-2.2.4.min.js"></script>
+    <script src="https://s3-us-west-1.amazonaws.com/drz-assets/scripts/js/jquery.mobile.custom.min.js" charset="utf-8"></script>
+    <script src="https://s3-us-west-1.amazonaws.com/drz-assets/scripts/js/drz.pattern.lib.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="https://s3-us-west-1.amazonaws.com/drz-assets/themes/default.min.css">
     <link rel="stylesheet" type="text/css" href="<%- path %>css/main.min.css">
   </head>
   <body>
-      <% include partials/header %>
-      <p>Node JS</p>
-      <p>EJS</p>
-      <p>SASS</p>
-      <p>Gulp</p>
-      <p>BrowserSync</p>
-      <p>ES6/Babel</p>
-      <p>Karma / Mocha / Chai</p>
-      <script src="node_modules/jquery/dist/jquery.min.js"></script>
-      <script src="<%- script %>" charset="utf-8"></script>
+    <div class="section lead-banner flex-center-all" style="background-image: url('images/speaker-texture.jpg');">
+      <div class="container">
+        <img class="av-logo av-shake" src="images/AV-Bros.png" alt="A.V. Brothers logo">
+        <p class="av-logo-text">Audio Video Bros.</p>
+      </div>
+    </div>
+    <div class="drzNav drzNav-links-center" data-nav-slide="center">
+      <button class="drzNav-hamburger"></button>
+      <ul class="drzNav-list drzAnchor-scroll">
+        <li class="drzNav-item"><a href="#services" class="drzNav-link">Services</a></li>
+        <li class="drzNav-item"><a href="#location" class="drzNav-link">Location</a></li>
+        <li class="drzNav-item"><a href="#contact" class="drzNav-link">Contact</a></li>
+      </ul>
+    </div>
+    <div class="section float-left services-section" data-anchor-scroll="services">
+      <div class="container">
+        <div class="row center-txt">
+          <h4 class="drz-h4">Services</h4>
+        </div>
+        <div class="row">
+          <div class="column col-6">
+            <span class="av-service">Display Mounting</span>
+            <hr class="drz-hr">
+            <p>Some text about this service</p>
+          </div>
+          <div class="column col-6">
+            <span class="av-service">Ceiling recessed Speakers</span>
+            <hr class="drz-hr">
+            <p>Some text about this service</p>
+          </div>
+          <div class="column col-6">
+            <span class="av-service">Ceiling Recessed Screens</span>
+            <hr class="drz-hr">
+            <p>Some text about this service</p>
+          </div>
+          <div class="column col-6">
+            <span class="av-service">Projector/Screen Mounting</span>
+            <hr class="drz-hr">
+            <p>Some text about this service</p>
+          </div>
+          <div class="column col-6">
+            <span class="av-service">Sound Bar/Surround Sound</span>
+            <hr class="drz-hr">
+            <p>Some text about this service</p>
+          </div>
+          <div class="column col-6">
+            <span class="av-service">Cable Running</span>
+            <hr class="drz-hr">
+            <p>Some text about this service</p>
+          </div>
+          <div class="column col-6">
+            <span class="av-service">Ethernet Cable Routing</span>
+            <hr class="drz-hr">
+            <p>Some text about this service</p>
+          </div>
+          <div class="column col-6">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section float-left header-section" data-anchor-scroll="location">
+      <div class="container">
+        <h3 class="av-h3"><i>Serving San Antonio and Surrounding Areas</i></h3>
+      </div>
+    </div>
+    <div class="section float-left" style="position: relative;">
+      <div class="av-circle">
+        <svg id="av-radar" version="1.1" viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet">
+          <circle cx="250" cy="250" r="200" fill-opacity="0" stroke="#d30000" stroke-width="1px">
+            <animate attributeName="r" from="0" to="200" dur="4.2s" repeatCount="indefinite" begin="0s" />
+          </circle>
+          <circle cx="250" cy="250" r="200" fill-opacity="0" stroke="#d30000" stroke-width="1px">
+            <animate attributeName="r" from="0" to="200" dur="4.2s" repeatCount="indefinite" begin="600ms" />
+          </circle>
+          <circle cx="250" cy="250" r="200" fill-opacity="0" stroke="#d30000" stroke-width="1px">
+            <animate attributeName="r" from="0" to="200" dur="4.2s" repeatCount="indefinite" begin="1200ms" />
+          </circle>
+          <circle cx="250" cy="250" r="200" fill-opacity="0" stroke="#d30000" stroke-width="1px">
+            <animate attributeName="r" from="0" to="200" dur="4.2s" repeatCount="indefinite" begin="1800ms" />
+          </circle>
+          <circle cx="250" cy="250" r="200" fill-opacity="0" stroke="#d30000" stroke-width="1px">
+            <animate attributeName="r" from="0" to="200" dur="4.2s" repeatCount="indefinite" begin="2400ms" />
+          </circle>
+          <circle cx="250" cy="250" r="200" fill-opacity="0" stroke="#d30000" stroke-width="1px">
+            <animate attributeName="r" from="0" to="200" dur="4.2s" repeatCount="indefinite" begin="3000ms" />
+          </circle>
+          <circle cx="250" cy="250" r="200" fill-opacity="0" stroke="#d30000" stroke-width="1px">
+            <animate attributeName="r" from="0" to="200" dur="4.2s" repeatCount="indefinite" begin="3600ms" />
+          </circle>
+        </svg>
+      </div>
+      <img class="av-map" src="images/san-antonio.png" alt="">
+    </div>
+    <div class="section float-left av-contact-section" data-anchor-scroll="contact">
+        <div class="container">
+          <div class="row center-txt">
+            <h4 class="drz-h4">Contact Us</h4>
+          </div>
+          <div class="column col-6">
+            <form class="drzForm drzForm-validate" novalidate>
+              <div class="drzForm-fieldContainer">
+                <label class="drzForm-fieldLabel">Name
+                <span class="drzForm-required"></span>
+                </label>
+                <input class="drzForm-inputText" type="text" data-validator="required">
+              </div>
+              <div class="drzForm-fieldContainer">
+                <label class="drzForm-fieldLabel">Email
+                <span class="drzForm-required"></span>
+                </label>
+                <input class="drzForm-inputEmail" type="email" data-validator="required">
+              </div>
+              <div class="drzForm-fieldContainer">
+                <label class="drzForm-fieldLabel">Message
+                  <span class="drzForm-required"></span>
+                </label>
+                <textarea class="drzForm-textarea" data-validator="required"></textarea>
+              </div>
+              <a class="drzBtn-link">
+                <button type="submit" class="drzBtn">Send Message</button>
+              </a>
+            <form>
+          </div>
+          <div class="column col-6">
+            <p>Phone: <a class="av-link"href="tel:1-210-555-5555">(210) 555-5555</a></p>
+            <p>Email: myemail@email.com</p>
+          </div>
+        </div>
+    </div>
+    <div class="section footer float-left">
+      <div class="container">
+        <div class="container">
+          <ul class="drzFooterNav-list drzFooterNav-list-center drzAnchor-scroll">
+            <li class="drzFooterNav-list-item">
+              <a class="drzFooterNav-list-topLink" href="#services">Services</a>
+            </li>
+            <li class="drzFooterNav-list-item">
+              <a class="drzFooterNav-list-topLink" href="#location">Location</a>
+            </li>
+            <li class="drzFooterNav-list-item">
+              <a class="drzFooterNav-list-topLink" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+        <div class="container">
+          <div class="drzSocialMedia center-txt">
+            <a class="drzSocialMedia-iconFacebook" href="#" target="_blank"></a> 
+            <a class="av-fb-text" href="#" target="_blank">Like us on Facebook!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section footer-finePrint float-left">
+      <div class="container">
+        <div class="footer-finePrint-row">
+          <div class="container center-txt">
+             &copy; AV Bros. <span id="av-year"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#" class="topScroll-button"></a>
+    <script type="text/javascript">
+    var yr = new Date();
+    yr = yr.getFullYear();
+    $('#av-year').text(yr);
+    $('.drzNav').drzNav();
+    $('.drzAnchor-scroll').drzAnchorScroll();
+    $(window).topScroll();
+    $('.drzForm-validate').drzFormValidate()
+    </script>
   </body>
 </html>

@@ -9,39 +9,6 @@ const rename = require('gulp-rename');
 const concat = require('gulp-concat');
 const minify = require('gulp-minify');
 const ejs = require('gulp-ejs');
-
-/* Uncomment this after manually adding RS cloudfiles config
-const fs = require('fs');
-const cloudfiles = require('gulp-cloudfiles');
-
-const rackspace = JSON.parse(fs.readFileSync('./rackspace.json'));
-
-// Edit settings here as necessary
-const rackspaceFiles = function buildJS() {
-  const container = 'https://cdn-url/';
-  const options = {
-    uploadPath: 'path/to/folder',
-  };
-  return gulp.src('./dist/**', { read: false })
-  .pipe(cloudfiles(rackspace, options))
-  .on('end', () => {
-    console.log(`Successfully pushed to cloudfiles.
-    Static URL: \x1b[33m${container}${options.uploadPath}index.html`
-    );
-  });
-};
-gulp.task('cloudfiles', rackspaceFiles);
-
-@IMPORTANT! name your rs config 'rackspace.json'
-formatted like so:
-{
-    "username": "cloudusername",
-    "apiKey": "hashed-api-key",
-    "region": "DC name (ex: DFW)",
-    "container": "CDN-name"
-}
-
-*/
 const reload = browserSync.reload;
 
 const sassTask = function buildSass() {
@@ -88,10 +55,6 @@ gulp.task('build-dist', () => {
      // run sass/js tasks
      sassTask();
      jsTask();
-     setTimeout(() => {
-       // uncomment after cloudfiles config is made
-       // rackspaceFiles();
-     }, 1000);
    });
 });
 
@@ -103,8 +66,8 @@ gulp.task('browser-sync', ['nodemon'], () => {
     },
   });
   browserSync({
-    proxy: 'localhost:2001',
-    port: 2004,
+    proxy: 'localhost:2007',
+    port: 2008,
     notify: false,
     ui: false,
   });
